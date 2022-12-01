@@ -9,16 +9,20 @@ import java.util.Date;
 
 @Entity
 @DiscriminatorValue("WithdrawalTransaction")
-public class WithdrawalTransaction {
+public class WithdrawalTransaction extends  Transaction {
+
+    private static final long serialVersionUID = 1L;
+
     public WithdrawalTransaction() {
     }
+
     public WithdrawalTransaction(double amount) {
-        super();
-    }
-    public WithdrawalTransaction(Date date, double amount, Account account, String approvalCode) {
-        super();
+        super(amount);
     }
 
+    public WithdrawalTransaction(Date date, double amount, Account account, String approvalCode) {
+        super(date, amount, account, approvalCode);
+    }
 }
 
 

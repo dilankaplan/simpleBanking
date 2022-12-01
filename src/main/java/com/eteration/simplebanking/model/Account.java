@@ -75,15 +75,17 @@ public class Account {
             this.transactions = transactions;
         }
 
-        public void post(WithdrawalTransaction transaction) throws InsufficientBalanceException {
-            if (transaction instanceof DepositTransaction) {
-                deposit(transaction.getAmount());
-            } else if (transaction instanceof PhoneBillPaymentTransaction) {
-                payPhoneBill(transaction.getAmount());
-            }
-            getTransactions().add(transaction);
-            transaction.setAccount(this);
+    public void post(Transaction transaction) throws InsufficientBalanceException {
+        if (transaction instanceof WithdrawalTransaction) {
+            withdraw(transaction.getAmount());
+        } else if (transaction instanceof DepositTransaction) {
+            deposit(transaction.getAmount());
+        } else if (transaction instanceof PhoneBillPaymentTransaction) {
+            payPhoneBill(transaction.getAmount());
         }
+        getTransactions().add(transaction);
+        transaction.setAccount(this);
+    }
 
         public void deposit(double amount) {
             this.setBalance(this.getBalance() + amount);
