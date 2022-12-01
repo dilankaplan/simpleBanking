@@ -43,7 +43,7 @@ public class AccountManager implements AccountService {
         Account account = accountRepository.findByAccountNumber(accountNumber);
         TransactionStatus transactionStatus;
         if (account != null) {
-            Transaction transaction = new WithdrawalTransaction(new Date(), amount, account, UUID.randomUUID().toString());
+            Transaction transaction = new Transaction(new Date(), amount, account, UUID.randomUUID().toString());
             account.post(transaction);
             transactionRepository.save(transaction);
             accountRepository.save(account);

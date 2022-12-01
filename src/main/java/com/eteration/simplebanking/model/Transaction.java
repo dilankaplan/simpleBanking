@@ -11,7 +11,7 @@ import java.util.Date;
 @Table(name = "transaction")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
-public abstract class Transaction {
+public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

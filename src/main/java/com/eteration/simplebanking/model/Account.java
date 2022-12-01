@@ -4,11 +4,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "account")
 public class Account {
-    @Entity
-    @Table(name = "account")
-    public class Account {
-
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "id")
@@ -77,10 +75,8 @@ public class Account {
             this.transactions = transactions;
         }
 
-        public void post(Transaction transaction) throws InsufficientBalanceException {
-            if (transaction instanceof WithdrawalTransaction) {
-                withdraw(transaction.getAmount());
-            } else if (transaction instanceof DepositTransaction) {
+        public void post(WithdrawalTransaction transaction) throws InsufficientBalanceException {
+            if (transaction instanceof DepositTransaction) {
                 deposit(transaction.getAmount());
             } else if (transaction instanceof PhoneBillPaymentTransaction) {
                 payPhoneBill(transaction.getAmount());

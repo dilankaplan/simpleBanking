@@ -5,7 +5,6 @@ import com.eteration.simplebanking.controller.TransactionStatus;
 import com.eteration.simplebanking.model.Account;
 import com.eteration.simplebanking.model.InsufficientBalanceException;
 
-// This class is a place holder you can change the complete implementation
 public interface AccountService {
     Account findAccount(String accountNumber);
 

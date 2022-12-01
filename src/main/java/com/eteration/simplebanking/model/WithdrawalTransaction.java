@@ -13,12 +13,12 @@ public class WithdrawalTransaction {
     public WithdrawalTransaction() {
     }
     public WithdrawalTransaction(double amount) {
-        //super(amount);
+        super();
+    }
+    public WithdrawalTransaction(Date date, double amount, Account account, String approvalCode) {
+        super();
     }
 
-    public WithdrawalTransaction(Date date, double amount, Account account, String approvalCode) {
-        //super(date, amount, account, approvalCode);
-    }
 }
 
 
